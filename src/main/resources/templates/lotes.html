@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroTrace Quevedo - Lotes de Cacao</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .header-agro { background: linear-gradient(135deg, #2d5016 0%, #4a7c23 100%); color: white; padding: 2rem 0; }
+        .card-lote { transition: transform 0.2s; border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .card-lote:hover { transform: translateY(-2px); }
+        .badge-certificado { background-color: #198754; }
+        .badge-pendiente { background-color: #ffc107; color: #000; }
+        .badge-verificacion { background-color: #0dcaf0; color: #000; }
+        .badge-anulado { background-color: #dc3545; }
+    </style>
+</head>
+<body>
+    <div class="header-agro">
+        <div class="container">
+            <h1><i class="bi bi-tree"></i> AgroTrace Quevedo</h1>
+            <p class="mb-0">Trazabilidad de Lotes de Cacao Fino de Aroma - Los Rios</p>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <h2>Lista de Lotes</h2>
+            </div>
+            <div class="col-md-4 text-end">
+                <a th:href="@{/lotes/nuevo}" class="btn btn-success">+ Nuevo Lote</a>
+            </div>
+        </div>
+
+        <div th:if="${success}" class="alert alert-success alert-dismissible fade show">
+            <span th:text="${success}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <div th:if="${error}" class="alert alert-danger alert-dismissible fade show">
+            <span th:text="${error}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <div class="row">
+            <div th:each="lote : ${lotes}" class="col-md-4 mb-4">
+                <div class="card card-lote">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <h5 class="card-title" th:text="${lote.codigo}">LOT-001</h5>
+                            <span th:if="${lote.estado == 'CERTIFICADO'}" class="badge badge-certificado">Certificado</span>
+                            <span th:if="${lote.estado == 'REGISTRADO'}" class="badge badge-pendiente">Pendiente</span>
+                            <span th:if="${lote.estado == 'EN_VERIFICACION'}" class="badge badge-verificacion">Verificacion</span>
+                            <span th:if="${lote.estado == 'ANULADO'}" class="badge badge-anulado">Anulado</span>
+                        </div>
+                        <p class="card-text">
+                            <small class="text-muted">Productor:</small><br>
+                            <strong th:text="${lote.productorNombre}">Juan Perez</strong>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">Variedad:</small>
+                            <span th:text="${lote.variedad}">Crillo</span> |
+                            <small class="text-muted">Peso:</small>
+                            <span th:text="${lote.pesoKg} + ' kg'">1200 kg</span>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">Cosecha:</small>
+                            <span th:text="${lote.fechaCosecha}">2024-01-15</span>
+                        </p>
+                        <a th:href="@{/lotes/{id}(id=${lote.id})}" class="btn btn-outline-primary btn-sm">Ver Detalle</a>
+                        <a th:href="@{/lotes/{id}/editar(id=${lote.id})}" class="btn btn-outline-secondary btn-sm">Editar</a>
+                        <form th:if="${lote.estado != 'ANULADO'}" th:action="@{/lotes/{id}/anular(id=${lote.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-outline-danger btn-sm"
+                                    onclick="return confirm('Anular este lote?')">Anular</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${#lists.isEmpty(lotes)}" class="text-center py-5">
+            <h4 class="text-muted">No hay lotes registrados</h4>
+            <a th:href="@{/lotes/nuevo}" class="btn btn-success mt-2">Registrar primer lote</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
