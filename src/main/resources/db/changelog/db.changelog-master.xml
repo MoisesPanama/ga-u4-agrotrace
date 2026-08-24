@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1" author="agrotrace">
+        <createTable tableName="lote">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="codigo" type="VARCHAR(50)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="productor_nombre" type="VARCHAR(150)" nullable="false"/>
+            <column name="productor_cedula" type="VARCHAR(20)" nullable="false"/>
+            <column name="finca_nombre" type="VARCHAR(100)"/>
+            <column name="finca_ubicacion" type="VARCHAR(200)"/>
+            <column name="variedad" type="VARCHAR(50)" defaultValue="CRILLO"/>
+            <column name="hectareas" type="DECIMAL(6,2)"/>
+            <column name="fecha_cosecha" type="DATE" nullable="false"/>
+            <column name="fecha_procesamiento" type="DATE"/>
+            <column name="peso_kg" type="DECIMAL(10,2)" nullable="false"/>
+            <column name="humedad_porcentaje" type="DECIMAL(5,2)"/>
+            <column name="fermentacion_horas" type="INTEGER"/>
+            <column name="temperatura_maxima" type="DECIMAL(5,2)"/>
+            <column name="temperatura_minima" type="DECIMAL(5,2)"/>
+            <column name="estado" type="VARCHAR(30)" defaultValue="REGISTRADO"/>
+            <column name="observaciones" type="TEXT"/>
+            <column name="certificado" type="BOOLEAN" defaultValue="false"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+
+        <insert tableName="lote">
+            <column name="codigo" value="LOT-001"/>
+            <column name="productor_nombre" value="Juan Perez"/>
+            <column name="productor_cedula" value="1801234567"/>
+            <column name="finca_nombre" value="Finca El Paraiso"/>
+            <column name="finca_ubicacion" value="Quevedo, Los Rios"/>
+            <column name="variedad" value="CRILLO"/>
+            <column name="hectareas" value="5.50"/>
+            <column name="fecha_cosecha" value="2024-01-15"/>
+            <column name="peso_kg" value="1200.00"/>
+            <column name="humedad_porcentaje" value="7.50"/>
+            <column name="fermentacion_horas" value="168"/>
+            <column name="temperatura_maxima" value="45.00"/>
+            <column name="temperatura_minima" value="38.00"/>
+            <column name="estado" value="CERTIFICADO"/>
+            <column name="certificado" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="lote">
+            <column name="codigo" value="LOT-002"/>
+            <column name="productor_nombre" value="Maria Lopez"/>
+            <column name="productor_cedula" value="1809876543"/>
+            <column name="finca_nombre" value="Finca San Jose"/>
+            <column name="finca_ubicacion" value="Quevedo, Los Rios"/>
+            <column name="variedad" value="NACIONAL"/>
+            <column name="hectareas" value="3.20"/>
+            <column name="fecha_cosecha" value="2024-02-10"/>
+            <column name="peso_kg" value="800.00"/>
+            <column name="humedad_porcentaje" value="6.80"/>
+            <column name="fermentacion_horas" value="144"/>
+            <column name="temperatura_maxima" value="44.00"/>
+            <column name="temperatura_minima" value="37.00"/>
+            <column name="estado" value="EN_VERIFICACION"/>
+            <column name="certificado" valueBoolean="false"/>
+        </insert>
+
+        <insert tableName="lote">
+            <column name="codigo" value="LOT-003"/>
+            <column name="productor_nombre" value="Carlos Mendoza"/>
+            <column name="productor_cedula" value="1805551234"/>
+            <column name="finca_nombre" value="Finca La Esperanza"/>
+            <column name="finca_ubicacion" value="Quevedo, Los Rios"/>
+            <column name="variedad" value="CRILLO"/>
+            <column name="hectareas" value="8.00"/>
+            <column name="fecha_cosecha" value="2024-03-05"/>
+            <column name="peso_kg" value="2000.00"/>
+            <column name="humedad_porcentaje" value="8.20"/>
+            <column name="fermentacion_horas" value="192"/>
+            <column name="temperatura_maxima" value="46.00"/>
+            <column name="temperatura_minima" value="39.00"/>
+            <column name="estado" value="REGISTRADO"/>
+            <column name="certificado" valueBoolean="false"/>
+        </insert>
+
+        <insert tableName="lote">
+            <column name="codigo" value="LOT-004"/>
+            <column name="productor_nombre" value="Ana Garcia"/>
+            <column name="productor_cedula" value="1806667890"/>
+            <column name="finca_nombre" value="Finca Bella Vista"/>
+            <column name="finca_ubicacion" value="Quevedo, Los Rios"/>
+            <column name="variedad" value="NACIONAL"/>
+            <column name="hectareas" value="4.50"/>
+            <column name="fecha_cosecha" value="2024-03-20"/>
+            <column name="peso_kg" value="1100.00"/>
+            <column name="humedad_porcentaje" value="7.00"/>
+            <column name="fermentacion_horas" value="156"/>
+            <column name="temperatura_maxima" value="43.50"/>
+            <column name="temperatura_minima" value="36.50"/>
+            <column name="estado" value="CERTIFICADO"/>
+            <column name="certificado" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="lote">
+            <column name="codigo" value="LOT-005"/>
+            <column name="productor_nombre" value="Pedro Torres"/>
+            <column name="productor_cedula" value="1807774321"/>
+            <column name="finca_nombre" value="Finca El Roble"/>
+            <column name="finca_ubicacion" value="Quevedo, Los Rios"/>
+            <column name="variedad" value="CRILLO"/>
+            <column name="hectareas" value="6.00"/>
+            <column name="fecha_cosecha" value="2024-04-01"/>
+            <column name="peso_kg" value="1500.00"/>
+            <column name="humedad_porcentaje" value="7.80"/>
+            <column name="fermentacion_horas" value="180"/>
+            <column name="temperatura_maxima" value="44.50"/>
+            <column name="temperatura_minima" value="37.50"/>
+            <column name="estado" value="REGISTRADO"/>
+            <column name="certificado" valueBoolean="false"/>
+        </insert>
+
+        <insert tableName="lote">
+            <column name="codigo" value="LOT-006"/>
+            <column name="productor_nombre" value="Rosa Diaz"/>
+            <column name="productor_cedula" value="1808885678"/>
+            <column name="finca_nombre" value="Finca Los Cacao"/>
+            <column name="finca_ubicacion" value="Quevedo, Los Rios"/>
+            <column name="variedad" value="NACIONAL"/>
+            <column name="hectareas" value="3.80"/>
+            <column name="fecha_cosecha" value="2024-04-15"/>
+            <column name="peso_kg" value="950.00"/>
+            <column name="humedad_porcentaje" value="6.50"/>
+            <column name="fermentacion_horas" value="132"/>
+            <column name="temperatura_maxima" value="42.00"/>
+            <column name="temperatura_minima" value="35.50"/>
+            <column name="estado" value="EN_VERIFICACION"/>
+            <column name="certificado" valueBoolean="false"/>
+        </insert>
+
+        <insert tableName="lote">
+            <column name="codigo" value="LOT-007"/>
+            <column name="productor_nombre" value="Luis Ramirez"/>
+            <column name="productor_cedula" value="1809996543"/>
+            <column name="finca_nombre" value="Finca El Porvenir"/>
+            <column name="finca_ubicacion" value="Quevedo, Los Rios"/>
+            <column name="variedad" value="CRILLO"/>
+            <column name="hectareas" value="7.20"/>
+            <column name="fecha_cosecha" value="2024-05-01"/>
+            <column name="peso_kg" value="1800.00"/>
+            <column name="humedad_porcentaje" value="8.00"/>
+            <column name="fermentacion_horas" value="200"/>
+            <column name="temperatura_maxima" value="45.50"/>
+            <column name="temperatura_minima" value="38.50"/>
+            <column name="estado" value="CERTIFICADO"/>
+            <column name="certificado" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="lote">
+            <column name="codigo" value="LOT-008"/>
+            <column name="productor_nombre" value="Carmen Silva"/>
+            <column name="productor_cedula" value="1801112345"/>
+            <column name="finca_nombre" value="Finca La Florida"/>
+            <column name="finca_ubicacion" value="Quevedo, Los Rios"/>
+            <column name="variedad" value="NACIONAL"/>
+            <column name="hectareas" value="4.00"/>
+            <column name="fecha_cosecha" value="2024-05-15"/>
+            <column name="peso_kg" value="1000.00"/>
+            <column name="humedad_porcentaje" value="7.20"/>
+            <column name="fermentacion_horas" value="160"/>
+            <column name="temperatura_maxima" value="43.00"/>
+            <column name="temperatura_minima" value="36.00"/>
+            <column name="estado" value="REGISTRADO"/>
+            <column name="certificado" valueBoolean="false"/>
+        </insert>
+
+        <insert tableName="lote">
+            <column name="codigo" value="LOT-009"/>
+            <column name="productor_nombre" value="Miguel Castro"/>
+            <column name="productor_cedula" value="1802223456"/>
+            <column name="finca_nombre" value="Finca El Recreo"/>
+            <column name="finca_ubicacion" value="Quevedo, Los Rios"/>
+            <column name="variedad" value="CRILLO"/>
+            <column name="hectareas" value="5.00"/>
+            <column name="fecha_cosecha" value="2024-06-01"/>
+            <column name="peso_kg" value="1300.00"/>
+            <column name="humedad_porcentaje" value="7.60"/>
+            <column name="fermentacion_horas" value="172"/>
+            <column name="temperatura_maxima" value="44.80"/>
+            <column name="temperatura_minima" value="37.80"/>
+            <column name="estado" value="EN_VERIFICACION"/>
+            <column name="certificado" valueBoolean="false"/>
+        </insert>
+
+        <insert tableName="lote">
+            <column name="codigo" value="LOT-010"/>
+            <column name="productor_nombre" value="Teresa Ortiz"/>
+            <column name="productor_cedula" value="1803334567"/>
+            <column name="finca_nombre" value="Finca Santa Maria"/>
+            <column name="finca_ubicacion" value="Quevedo, Los Rios"/>
+            <column name="variedad" value="NACIONAL"/>
+            <column name="hectareas" value="3.50"/>
+            <column name="fecha_cosecha" value="2024-06-15"/>
+            <column name="peso_kg" value="850.00"/>
+            <column name="humedad_porcentaje" value="6.90"/>
+            <column name="fermentacion_horas" value="140"/>
+            <column name="temperatura_maxima" value="42.50"/>
+            <column name="temperatura_minima" value="35.80"/>
+            <column name="estado" value="CERTIFICADO"/>
+            <column name="certificado" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="lote">
+            <column name="codigo" value="LOT-011"/>
+            <column name="productor_nombre" value="Roberto Vargas"/>
+            <column name="productor_cedula" value="1804445678"/>
+            <column name="finca_nombre" value="Finca El Carmen"/>
+            <column name="finca_ubicacion" value="Quevedo, Los Rios"/>
+            <column name="variedad" value="CRILLO"/>
+            <column name="hectareas" value="6.50"/>
+            <column name="fecha_cosecha" value="2024-07-01"/>
+            <column name="peso_kg" value="1600.00"/>
+            <column name="humedad_porcentaje" value="8.10"/>
+            <column name="fermentacion_horas" value="188"/>
+            <column name="temperatura_maxima" value="45.20"/>
+            <column name="temperatura_minima" value="38.20"/>
+            <column name="estado" value="REGISTRADO"/>
+            <column name="certificado" valueBoolean="false"/>
+        </insert>
+
+        <insert tableName="lote">
+            <column name="codigo" value="LOT-012"/>
+            <column name="productor_nombre" value="Patricia Flores"/>
+            <column name="productor_cedula" value="1805556789"/>
+            <column name="finca_nombre" value="Finca La Concepcion"/>
+            <column name="finca_ubicacion" value="Quevedo, Los Rios"/>
+            <column name="variedad" value="NACIONAL"/>
+            <column name="hectareas" value="4.20"/>
+            <column name="fecha_cosecha" value="2024-07-15"/>
+            <column name="peso_kg" value="1050.00"/>
+            <column name="humedad_porcentaje" value="7.10"/>
+            <column name="fermentacion_horas" value="152"/>
+            <column name="temperatura_maxima" value="43.20"/>
+            <column name="temperatura_minima" value="36.20"/>
+            <column name="estado" value="EN_VERIFICACION"/>
+            <column name="certificado" valueBoolean="false"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
