@@ -4,7 +4,7 @@ Aplicacion web MVC para registro y trazabilidad de lotes de cacao fino de aroma 
 
 ## Contexto
 - **Cliente:** APROCAFA (160 productores, centro de acopio en Quevedo)
-- **Stack:** Spring Boot 3.4.1 + Java 21 LTS + PostgreSQL + Redis + Thymeleaf
+- **Stack:** Spring Boot 4.1.1 + Java 21 LTS + PostgreSQL + Redis + Thymeleaf
 
 ## Caracteristicas
 

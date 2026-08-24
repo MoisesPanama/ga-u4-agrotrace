@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="https://agrotrace.uteq.edu.ec/soap/certificacion"
+           targetNamespace="https://agrotrace.uteq.edu.ec/soap/certificacion"
+           elementFormDefault="qualified">
+
+    <!-- TODO-GA-09: Tipo restringido para codigo de lote -->
+    <xs:simpleType name="CodigoLote">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="LT-[0-9]{6}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- TODO-GA-09: Peticion de certificacion -->
+    <xs:element name="CertificarLoteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codigoLote" type="tns:CodigoLote"/>
+                <xs:element name="cedulaTecnico" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- TODO-GA-09: Respuesta de certificacion -->
+    <xs:element name="CertificarLoteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="numeroCertificado" type="xs:string"/>
+                <xs:element name="codigoLote" type="tns:CodigoLote"/>
+                <xs:element name="fincaOrigen" type="xs:string"/>
+                <xs:element name="pesoKg" type="xs:decimal"/>
+                <xs:element name="estadoLote" type="xs:string"/>
+                <xs:element name="fechaEmision" type="xs:date"/>
+                <xs:element name="vigente" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- TODO-GA-09: Peticion de consulta -->
+    <xs:element name="ConsultarLoteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codigoLote" type="tns:CodigoLote"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- TODO-GA-09: Respuesta de consulta -->
+    <xs:element name="ConsultarLoteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codigoLote" type="tns:CodigoLote"/>
+                <xs:element name="fincaOrigen" type="xs:string"/>
+                <xs:element name="productor" type="xs:string"/>
+                <xs:element name="pesoKg" type="xs:decimal"/>
+                <xs:element name="humedadPorcentaje" type="xs:decimal"/>
+                <xs:element name="fermentacionPorcentaje" type="xs:decimal"/>
+                <xs:element name="estadoLote" type="xs:string"/>
+                <xs:element name="certificado" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
