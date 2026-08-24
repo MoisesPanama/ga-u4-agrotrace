@@ -19,6 +19,7 @@ public class LoteService {
     private LoteRepository loteRepository;
 
     // TODO-GA-04: Implementar servicio con logica de negocio
+    // TODO-GA-14: Comparar Spring Boot vs otro framework MVC
     public List<Lote> listarTodos() {
         return loteRepository.findAll();
     }

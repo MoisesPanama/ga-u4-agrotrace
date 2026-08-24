@@ -29,6 +29,7 @@ public class ClimaService {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
+    // TODO-GA-12: Consumo de servicios externos desde servidor
     // TODO-GA-13: Implementar cache con Redis (patron cache-aside)
     public Map<String, Object> obtenerClima(String ciudad) {
         String cacheKey = "clima:" + ciudad;

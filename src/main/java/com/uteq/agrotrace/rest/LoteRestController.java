@@ -23,6 +23,7 @@ public class LoteRestController {
 
     // TODO-GA-06: Publicar API REST para exportadoras
     // TODO-GA-07: Implementar versioning de API
+    // TODO-GA-08: Manejo de errores uniformes (RFC 9457)
     @GetMapping
     public ResponseEntity<List<Lote>> listarTodos(
             @RequestParam(required = false) String estado,

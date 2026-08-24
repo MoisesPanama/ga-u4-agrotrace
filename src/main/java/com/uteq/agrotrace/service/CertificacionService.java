@@ -15,6 +15,7 @@ public class CertificacionService {
     private LoteService loteService;
 
     // TODO-GA-10: Consumir servicio SOAP de certificacion
+    // TODO-GA-12: Consumo de servicios desde servidor con manejo de errores
     public Map<String, Object> certificarLote(Long loteId) {
         Lote lote = loteService.buscarPorId(loteId)
                 .orElseThrow(() -> new RuntimeException("Lote no encontrado"));
