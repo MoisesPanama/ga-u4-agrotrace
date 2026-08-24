@@ -10,6 +10,8 @@ import java.util.Optional;
 
 @Service
 @Transactional
+// TODO-GA-12: Consumo de servicios externos desde servidor
+// TODO-GA-13: Cache con Redis (patron cache-aside)
 public class LoteService {
 
     @Autowired

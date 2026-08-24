@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/lotes")
+// TODO-GA-14: Comparar Spring Boot vs otro framework MVC
 public class LoteWebController {
 
     @Autowired
